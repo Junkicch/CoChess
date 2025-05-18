@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Nickname</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --background-color: #000;
+            --text-color: #fff;
+            --input-bg: #333;
+            --input-border: #444;
+            --input-placeholder: #aaa;
+            --button-bg: #444;
+            --button-hover-bg: #666;
+            --link-color: #08f;
+            --success-color: green;
+            --error-color: red;
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input.input-field {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid var(--input-border);
+            border-radius: 5px;
+            background: var(--input-bg);
+            color: var(--text-color);
+            width: 200px;
+        }
+        input::placeholder {
+            color: var(--input-placeholder);
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--button-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: var(--button-hover-bg);
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .flash-messages ul {
+            padding: 0;
+            list-style: none;
+        }
+        .flash-success {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        .flash-error {
+            color: var(--error-color);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Page Title -->
+    <h1>Change Nickname</h1>
+    <!-- Flash Messages -->
+    {% if get_flashed_messages(with_categories=True) %}
+    <section role="alert" aria-live="polite" class="flash-messages" aria-label="Flash Messages">
+        <ul>
+            {% for category, message in get_flashed_messages(with_categories=True) %}
+            <li class="flash-{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+    <!-- Change Nickname Form -->
+    <form method="POST" action="{{ url_for('change_nickname') }}">
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required placeholder="Digite seu e-mail aqui" minlength="5" maxlength="50">
+      <label for="nickname">New Nickname:</label>
+      <input type="text" id="nickname" name="nickname" required placeholder="Enter a new nickname" minlength="5" maxlength="50">
+      <label for="password">Current Password:</label>
+      <input type="password" id="password" name="password" required placeholder="Enter your current password">
+      <label for="confirm_password">Confirm Password:</label>
+      <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+      <button type="submit">Change Nickname</button>
+    </form>
+    <!-- Back to Home -->
+    <a href="{{ url_for('home') }}" aria-label="Navigate back to the Homepage">Back to Home</a>
+</div>
+</body>
+</html>

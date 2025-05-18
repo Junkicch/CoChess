@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Estilo geral da página */
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container centralizado */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Estilo dos títulos */
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos adicionais para links */
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #444;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #666;
+        }
+
+        /* Estilos para mensagens */
+        .message {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .message-success {
+            color: green;
+        }
+
+        .message-error {
+            color: red;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Título -->
+        <h1>CoChess</h1>
+
+        <!-- Links de navegação -->
+        <a href="{{ url_for('login') }}">Log In</a>
+        <a href="{{ url_for('create_account') }}">Create Account</a>
+
+        <!-- Exibição de mensagens -->
+        <div>
+            {% block flash_messages %}
+            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                <li class="message message-{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
