@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            background-color: black;
+        }
+        .navbar button {
+            padding: 10px 20px;
+            background-color: white;
+            border: none;
+            margin: 2px;
+            cursor: pointer;
+        }
+        .navbar button.active {
+            background-color: black;
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: black;
+            color: #66cccc;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            border: none;
+            margin: 2px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn.active {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a class="btn" href="{{ url_for('game') }}">PLAY</a>
+        <a class="btn active" href="{{ url_for('train') }}">TRAIN</a>
+        <a class="btn" href="{{ url_for('lobby') }}">HOME</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>RESULT</th>
+                <th>ANALYSIS</th>
+                <th>SCORE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>victory</td><td>-</td><td>-</td></tr>
+            <tr><td>defeat</td><td>-</td><td>-</td></tr>
+            <tr><td>defeat</td><td>-</td><td>-</td></tr>
+            <tr><td>defeat</td><td>-</td><td>-</td></tr>
+            <tr><td>defeat</td><td>-</td><td>-</td></tr>
+            <tr><td>defeat</td><td>-</td><td>-</td></tr>
+            <tr><td>defeat</td><td>-</td><td>-</td></tr>
+            <tr><td>defeat</td><td>-</td><td>-</td></tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
